@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5DC; /* Bege claro */
+  color: #333;
+}
+
+header {
+  background-color: #D32F2F; /* Vermelho */
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.corpo-container {
+  text-align: center;
+  margin: 40px auto;
+}
+
+.imagem-corpo {
+  max-width: 90%;
+  height: auto;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 2px solid #D32F2F;
+  width: 60%;
+  border-radius: 8px;
+}
+
+.fechar {
+  color: #D32F2F;
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}

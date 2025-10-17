@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corpo Humano</title>
+  <link rel="stylesheet" href="pag1.css">
+</head>
+<body>
+  <header>
+    <h1>Explorando o Corpo Humano</h1>
+  </header>
+
+  <main>
+    <div class="corpo-container">
+      <img src="corpo-humano.png" alt="Corpo Humano" usemap="#mapa-corpo" class="imagem-corpo">
+      
+      <!-- Mapeamento das áreas clicáveis -->
+      <map name="mapa-corpo">
+        <area shape="circle" coords="180,260,30" alt="Bíceps" onclick="mostrarInfo('biceps')">
+        <area shape="circle" coords="180,400,30" alt="Quadríceps" onclick="mostrarInfo('quadriceps')">
+      </map>
+    </div>
+  </main>
+
+  <!-- Modal com informações -->
+  <div id="info-modal" class="modal">
+    <div class="modal-content">
+      <span class="fechar" onclick="fecharModal()">&times;</span>
+      <h2 id="titulo-musculo"></h2>
+      <p id="descricao-musculo"></p>
+    </div>
+  </div>
+
+  <script src="pag1.js"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - Anatomia Viva</title>
+  <style>
+    :root {
+      --vermelho: #b22222;
+      --vermelho-escuro: #8b1a1a;
+      --bege-claro: #fdf5e6;
+      --branco: #ffffff;
+      --cinza: #666;
+      --cinza-claro: #aaa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--bege-claro), #f9f1dc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: var(--branco);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      animation: slideUp 0.8s ease forwards;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .login-container h2 {
+      text-align: center;
+      color: var(--vermelho);
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--cinza);
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input::placeholder {
+      color: var(--cinza-claro);
+    }
+
+    .form-group input:focus {
+      border-color: var(--vermelho);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(178, 34, 34, 0.1);
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--vermelho);
+      color: var(--branco);
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-login:hover {
+      background-color: var(--vermelho-escuro);
+      transform: scale(1.02);
+    }
+
+    .btn-login:active {
+      transform: scale(0.98);
+    }
+
+    .btn-login::before {
+      content: "🔒 ";
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--cinza);
+    }
+
+    .footer a {
+      color: var(--vermelho);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .message.error {
+      color: red;
+    }
+
+    .message.success {
+      color: green;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 30px 20px;
+        border-radius: 8px;
+      }
+
+      .login-container h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Anatomia Viva</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="usuario">Usuário ou E-mail</label>
+        <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário" required>
+      </div>
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+      </div>
+      <button type="submit" class="btn-login">Entrar</button>
+      <div class="message" id="loginMessage"></div>
+    </form>
+    <div class="footer">
+      <p>Esqueceu a senha? <a href="#">Recuperar</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Impede envio do formulário
+
+      const usuario = document.getElementById('usuario').value.trim();
+      const senha = document.getElementById('senha').value.trim();
+      const mensagem = document.getElementById('loginMessage');
+
+      // Limpar mensagens anteriores
+      mensagem.textContent = '';
+      mensagem.classList.remove('error', 'success');
+
+      // Validação simples
+      if (usuario === '' || senha === '') {
+        mensagem.textContent = 'Preencha todos os campos.';
+        mensagem.classList.add('error');
+        return;
+      }
+
+      // Simulação de login
+      if (usuario === 'admin' && senha === '1234') {
+        mensagem.textContent = 'Login bem-sucedido! Redirecionando...';
+        mensagem.classList.add('success');
+
+        // Simula redirecionamento
+        setTimeout(() => {
+          window.location.href = 'pag1.html'; // Troque pelo seu painel real
+        }, 1500);
+      } else {
+        mensagem.textContent = 'Usuário ou senha incorretos.';
+        mensagem.classList.add('error');
+      }
+    });
+  </script>
+
+</body>
+</html>
+
